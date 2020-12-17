@@ -26,7 +26,7 @@ with open(args.tweet_file) as tweet_file:
 
 		if date not in monthfiles:
 			datename = date.strftime("%Y-%m.jsonl")
-			monthfiles[date] = open(date.strftime, 'w+')
+			monthfiles[date] = open(datename, 'w+')
 		
 		monthfiles[date].write(tweet_json)
 
