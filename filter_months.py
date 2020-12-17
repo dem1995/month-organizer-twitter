@@ -12,7 +12,7 @@ if not os.path.exists(args.outfolder):
     os.makedirs(args.outfolder)
 
 with open(f"{args.outfolder}/log.txt", 'a+') as logfile:
-	logfile.write(f"Started at {datetime.datetime.now()}:\n")
+	logfile.write(f"Started at {datetime.now()}:\n")
 	logfile.write(f"{args.tweet_file}")
 
 monthfiles = dict()
