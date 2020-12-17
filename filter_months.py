@@ -33,4 +33,4 @@ with open(args.tweet_file) as tweet_file:
 			curfile = open(datename, 'a+')
 			curopen = datename
 		
-		curopen.write(tweet_json)
+		curfile.write(tweet_json)
