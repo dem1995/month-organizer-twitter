@@ -21,7 +21,7 @@ with open(args.tweet_file) as tweet_file:
 	for tweet_json in tweet_file:
 		tweet_dict = json.loads(tweet_json)
 		date = tweet_dict['created_at']
-		date = datetime.strptime(date, "%a %b %d %H:%M:%S %z %Y\n")
+		date = datetime.strptime(date, "%a %b %d %H:%M:%S %z %Y")
 		date = date - timedelta(hours=6)
 
 		if date not in monthfiles:
