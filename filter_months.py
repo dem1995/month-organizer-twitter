@@ -28,7 +28,8 @@ with open(args.tweet_file) as tweet_file:
 		datename = date.strftime("%Y-%m.jsonl")
 		
 		if datename != curopen:
-			curfile.close()
+			if curfile != None:
+				curfile.close()
 			curfile = open(datename, 'a+')
 			curopen = datename
 		
