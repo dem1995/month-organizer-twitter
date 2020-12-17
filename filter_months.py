@@ -15,7 +15,8 @@ with open(f"{args.outfolder}/log.txt", 'a+') as logfile:
 	logfile.write(f"Started at {datetime.now()}:\n")
 	logfile.write(f"{args.tweet_file}")
 
-monthfiles = dict()
+curfile = None
+curopen = None
 
 with open(args.tweet_file) as tweet_file:
 	for tweet_json in tweet_file:
@@ -24,11 +25,11 @@ with open(args.tweet_file) as tweet_file:
 		date = datetime.strptime(date, "%a %b %d %H:%M:%S %z %Y")
 		date = date - timedelta(hours=6)
 
-		if date not in monthfiles:
-			datename = date.strftime("%Y-%m.jsonl")
-			monthfiles[date] = open(datename, 'w+')
+		datename = date.strftime("%Y-%m.jsonl")
 		
-		monthfiles[date].write(tweet_json)
-
-for month, monthfile in monthfiles.items():
-	monthfile.close()
+		if datename != curopen:
+			curfile.close()
+			curfile = open(datename, 'a+')
+			curopen = datename
+		
+		curopen.write(tweet_json)
