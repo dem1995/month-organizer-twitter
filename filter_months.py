@@ -18,7 +18,7 @@ with open(f"{args.outfolder}/log.txt", 'a+') as logfile:
 curfile = None
 curopen = None
 
-with open(args.tweet_file) as tweet_file:
+with open(args.tweet_file, encoding="utf-8") as tweet_file:
 	for tweet_json in tweet_file:
 		tweet_dict = json.loads(tweet_json)
 		date = tweet_dict['created_at']
@@ -30,7 +30,7 @@ with open(args.tweet_file) as tweet_file:
 		if datename != curopen:
 			if curfile != None:
 				curfile.close()
-			curfile = open(datename, 'a+')
+			curfile = open(datename, 'a+', encoding="utf-8")
 			curopen = datename
 		
 		curfile.write(tweet_json)
