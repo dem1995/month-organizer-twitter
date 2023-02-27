@@ -1,4 +1,4 @@
-# month-filter-twitter
+# month-organizer-twitter
 Program for organizing a collection of line-separated json-formatted tweets into folders by month of creation.
 
 ## usage
